@@ -6,12 +6,21 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'bg-login',
+    'bg-signup',
+    
+  ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        signup:"#435E93",
+        login: "#735D00",
       },
+      backgroundImage: {
+        // "bg-image":"url('./public/assets/image-bg.png')"
+      },
+     
     },
   },
   plugins: [],

@@ -1,0 +1,58 @@
+"use client"
+import React, { useState } from 'react'
+import Link from "next/link";
+import ExploreButton from "./ExploreButton"
+import Image from 'next/image';
+import blogImg from "../../../public/assets/blog.png"
+
+const Blog = () => {
+const content = [
+    {title: "Top 10 Self-Help Books of 2024",
+    description: "Discover the most impactful self-help books this year"
+    },
+    
+    {
+    title: "How Chapter Summaries Enhance Your Reading",
+    description: "Learn how to break down chapters can improve your reading comprehension"
+    },
+    {
+    title: "Join Our Community Book Club",
+    description: "Connect with others and discuss books"
+    },
+    
+]
+  return (
+    <div className="px-24 text-center border lg:-mt-16">
+      <div className=" py-8   ">
+      <h2 className="text-xl font-semibold py-8 my-4 lg:text-2xl text-left border-b ">Latest Insights from the ChapterWise Blog</h2>
+      <p className="text-sm lg:text-xl border text-left">
+        Stay updated with the latest trends, reading tips and community happenings. 
+        Explore our top blog posts 
+        and dive deeper into your reading journey </p>
+      </div>
+    <div className="grid grid-cols-2 gap-20 text-center">
+        <div className='border'>
+        <Image src={blogImg} alt='blog'/>
+        </div>
+        <div className='flex flex-col  items-left'>
+
+        {content.map((item) => (
+            <div className='text-left border p-4 '>  
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+                
+                <Link href="/" className="flex justify-start">
+                <ExploreButton/>
+                 </Link>
+            </div>
+        ))}
+        </div>
+
+
+        </div>
+        </div>
+  );
+}
+
+
+export default Blog
