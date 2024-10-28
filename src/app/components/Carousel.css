@@ -4,7 +4,7 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  height: auto;
+  height: 500px;
   
 }
 .slick-track {
@@ -13,11 +13,12 @@
 
 .slide .img {
   width: 48rem;
+  height: 12rem;
   margin: 0 auto;
 }
 
 .slide {
-  transform: scale(0.8);
+  transform: scale(1);
   transition: transform 300ms;
   opacity: 0.5;
   
@@ -42,18 +43,24 @@
   transition: color 300ms;
 }
 
-.arrow svg:hover {
-  color: #68edff;
-}
 
 .next {
   right: 0%;
   top: 50%;
+ 
 }
 
 .prev {
   left: 0%;
   top: 50%;
+  
  
   
+}
+@media (min-width:768px) {
+  .slide .img {
+    width: 48rem;
+    height: 24rem;
+    margin: 0 auto;
+  }
 }

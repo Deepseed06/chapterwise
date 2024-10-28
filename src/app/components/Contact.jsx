@@ -4,35 +4,45 @@ import ContactImage from "../../../public/assets/contact.png"
 import Button from "./Button"
 const Contact = () => {
   return (
-    <div className='grid grid-cols-2  my-8 py-4 px-24'>
-        <div>
-            <div>
-            <h2>Contact ChapterWise</h2>
-                <p>We're offline right now, but we'll respond 
-                    to your messages when we're back online <br />
+    <div className='grid grid-cols-1 lg:grid-cols-2 my-8 py-4 lg:px-24 '>
+
+        <div className='bg-[#BAC6EC] lg:hidden p-12 flex text-center'>
+        <Image src={ContactImage} width={500} height={500} alt='contact'/>
+        </div>
+        <div className='px-8 w-full border shadow-lg py-8'>
+            <div className='flex items-center text-center flex-col'>
+            <h2 className='text-signup py-8 font-semibold'>Contact ChapterWise</h2>
+                <p className='text-[#C3C7CB]'>We&#39;re offline right now, but we&#39;ll respond 
+                    to your messages when we&#39;re back online 
                     <span>Please submit your email address and 
                         describe the question below</span>
                     
                 </p>
             </div>
             <div>
-            <div>
+            <div className='w-full my-4'>
                 <label>Name:</label>
-                <input type="text" placeholder='Enter Your Full Name' />
+                <div className='p-4 border'>
+                <input type="text" placeholder='Enter Your Full Name' className='w-full outline-none' />
+                </div>
             </div>
-            <div className='w-full border-2'>
+            <div className='w-full my-8'>
                 <label>Email Address:</label>
-                <input type="text" placeholder='Enter Your Email Address' />
+                <div className='p-4 w-full border'>
+                <input type="text" placeholder='Enter Your Email Address' className='w-full outline-none' />
+                </div>
+                    
             </div>
-            <div>
+            <div className=' w-full my-8'>
                 <label>Message:</label>
-                <input type="text" placeholder='Enter Your Message' />
+                <textarea name="Message" id="" className='border w-full p-4'></textarea>
+
             </div>
             </div>
             <Button text="Send Message" color="signup"/>
         </div>
         
-        <div className='bg-[#BAC6EC] p-12 text-center'>
+        <div className='bg-[#BAC6EC]  hidden lg:flex items-center justify-center p-12 text-center'>
         <Image src={ContactImage} alt='contact'/>
         </div>
     </div>

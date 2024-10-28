@@ -42,18 +42,35 @@ function Carousel() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     beforeChange: (current, next) => setImageIndex(next+1),
+    responsive:[
+     {
+        breakpoint: 768,
+        settings: {
+          infinite: true,
+          lazyLoad: true,
+          speed: 300,
+          slidesToShow: 3,
+          centerMode: true,
+          centerPadding: 0,
+          nextArrow: <NextArrow />,
+          prevArrow: <PrevArrow />,
+          beforeChange: (current, next) => setImageIndex(next),
+        
+      }
+    }
+    ]
   };
 
   return (
-    <div className="px-16 py-8 text-center border lg:-mt-16">
-      <div className=" py-4 text-[#304672] font-semibold">
+    <div className="px-16 lg:py-16 text-center border lg:mb-24 lg:-mt-16">
+      <div className=" text-[#304672] font-semibold">
       <h2 className="text-3xl py-4 lg:text-5xl ">A world of knowlede in <br /> your pocket</h2>
       <p>What are you interested in?</p>
       </div>
-    <div className="container text-center p-8  ">
+    <div className=" text-center lg:py-16 ">
       <Slider {...settings} >
         {images.map((img, idx) => (
-          <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
+          <div className={idx === imageIndex ? "slide activeSlide" : "slide"} key={idx}>
             <Image src={img} alt={img} className="img"/>
           </div>
         ))}
@@ -62,7 +79,7 @@ function Carousel() {
     <Link href={"/"}>
                 <button
                   type="submit"
-                  className="mt-3 w-full px-10 py-3 border border-transparent text-base font-medium rounded-md 
+                  className="mt-3  w-full px-14 py-3 border border-transparent text-base font-medium rounded-xl 
                   text-white bg-signup shadow-sm hover:bg-primary/90 focus:outline-none   
                   sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                 >

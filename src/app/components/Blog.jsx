@@ -1,5 +1,4 @@
 "use client"
-import React, { useState } from 'react'
 import Link from "next/link";
 import ExploreButton from "./ExploreButton"
 import Image from 'next/image';
@@ -22,22 +21,22 @@ const content = [
     
 ]
   return (
-    <div className="px-24 text-center border lg:-mt-16">
+    <div className="w-full px-8 lg:px-24 text-center lg:-mt-16">
       <div className=" py-8   ">
       <h2 className="text-xl font-semibold py-8 my-4 lg:text-2xl text-left border-b ">Latest Insights from the ChapterWise Blog</h2>
-      <p className="text-sm lg:text-xl border text-left">
+      <p className="text-sm lg:text-xl  text-left">
         Stay updated with the latest trends, reading tips and community happenings. 
         Explore our top blog posts 
         and dive deeper into your reading journey </p>
       </div>
-    <div className="grid grid-cols-2 gap-20 text-center">
-        <div className='border'>
+    <div className="md:grid md:grid-cols-2 gap-20 text-center">
+        <div className='hidden md:block'>
         <Image src={blogImg} alt='blog'/>
         </div>
-        <div className='flex flex-col  items-left'>
+        <div className='flex flex-col items-left'>
 
         {content.map((item) => (
-            <div className='text-left border p-4 '>  
+            <div className='text-left border p-4 w-full' key={item.index}>  
                 <h2>{item.title}</h2>
                 <p>{item.description}</p>
                 

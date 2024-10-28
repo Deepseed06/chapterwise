@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.css"
 import {Lato} from "next/font/google" 
  
 const lato = Lato({
@@ -23,6 +23,7 @@ export default function RootLayout({
       <body
         className={`${lato.className} antialiased`}
       >
+        
         {children}
       </body>
     </html>

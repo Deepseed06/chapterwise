@@ -4,7 +4,7 @@ const Button = ({color, text}) => {
     
   return (
     <div className={`bg-${color} p-4 border
-     border-${color} text-white rounded-lg text-center`}>{text}</div>
+     border-${color} text-white rounded-xl text-center`}>{text}</div>
 
   )
 }
