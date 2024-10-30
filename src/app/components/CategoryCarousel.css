@@ -6,6 +6,7 @@
   margin: 0 auto;
   height: auto;
   
+  
 }
 .slick-track {
     margin: 0 auto;
@@ -60,11 +61,11 @@
  
   
 }
-@media (min-width:400px) {
+@media (min-width:350px) {
   .slide .img {
     width: 48rem;
     margin: 0 auto;
-    height: 12rem;
+    height: 8rem;
   }
   .forward {
     right: 40%;

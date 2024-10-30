@@ -45,7 +45,7 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
           infinite: true,
           lazyLoad: true,
           speed: 300,
-          slidesToShow: 2,
+          slidesToShow: 3,
           centerMode: true,
           centerPadding: 0,
           nextArrow: <NextArrow />,
@@ -55,12 +55,12 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
       }
     },
       {
-        breakpoint: 400,
+        breakpoint: 500,
         settings: {
           infinite: true,
           lazyLoad: true,
           speed: 300,
-          slidesToShow: 1,
+          slidesToShow: 2,
           centerMode: true,
           centerPadding: 0,
           nextArrow: <NextArrow />,
@@ -75,23 +75,25 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
  
 
   return (
-    <div className="px-4 lg:px-24 text-center border lg:-mt-16">
-      <div className=" py-8   ">
+    <div className=" mr-2 lg:px-24 text-center border lg:-mt-16">
+      <div className=" py-8 px-8   ">
       <h2 className="text-xl font-semibold py-4 my-4 lg:text-2xl text-left border-b ">Enhance Your Growth Journey</h2>
-      <p className="text-sm border text-left">Discover books that will enhance your mental, spiritual, emotional, and financial growth,
+      <p className="text-sm text-left">Discover books that will enhance your mental, spiritual, emotional, and financial growth,
          helping you build better habits, relationships, 
         and time management skills.</p>
       </div>
-    <div className="grid grid-cols-1 border text-center ">
+    <div className=" text-center ">
       <Slider {...settings} >
         {images.map((img, idx) => (
-           <div key={idx} className="p-2 lg:p-2">
+           <div key={idx} className=" p-4 lg:p-2">
             <Card 
             key={idx}
             title={img}
             imageUrl={Journey}
             exploreText="Discover More"
-            description={"Unlock your potential with strategies to overcome mediocrity and adopt a success-driven mindset. Discover how high achievers think and elevate your mental performance."}
+            description="Unlock your potential with strategies to overcome 
+            mediocrity and adopt a success-driven mindset. Discover how high 
+            achievers think and elevate your mental performance."
             />
             </div>
         ))}

@@ -27,17 +27,16 @@ export default function Hero() {
                 <span className="block text-[#304672]">Chapter at a Time</span>
               </span>
             </h1>
-            <p className="mt-3 text-signup sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+            <p className="mt-3 text-signup sm: sm:text-xl lg:text-lg xl:text-xl">
               Discover Chapter reviews, personalized reading and join discussions
             </p>
-            <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center  lg:text-left lg:mx-0 lg:flex ">
+            <div className="mt-4 sm:max-w-lg sm:mx-auto sm:text-center  lg:text-left lg:mx-0 lg:flex ">
               
                 <Link href={"/"}>
                 <button
                   type="submit"
-                  className="mt-3 rounded-xl w-full px-10 py-3 text-base font-medium 
-                  text-white bg-signup shadow-sm  
-                  sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                  className=" rounded-xl w-full px-10 py-3 text-base font-medium 
+                  text-white bg-signup shadow-sm "
                 >
                   Get Started for free 
                 </button>
