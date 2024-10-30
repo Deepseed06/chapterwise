@@ -27,7 +27,7 @@ export default function Header() {
         <div className="flex justify-between  items-center py-4  ">
           <div className="flex justify-start lg:flex-1">
             <Link href="/">
-                <span className=' text-login lg:text-3xl '>ChapterWise</span>
+                <span className=' text-login lg:text-3xl font-semibold '>ChapterWise</span>
             </Link>
           </div>
             <div className='md:hidden'>
@@ -43,35 +43,35 @@ export default function Header() {
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <nav className="hidden  md:justify-center w-full md:flex lg:flex xl:justify-center md:text-xs lg:text-base  space-x-6">
+          <nav className="hidden text-signup  md:justify-center w-full font-semibold md:flex lg:flex xl:justify-center md:text-xs xl:text-base  space-x-6">
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>    
-            <Link href="/features" className=" flex items-center  font-medium text-primary hover:text-primary-foreground">
+            <Link href="/features" className=" flex items-center  ">
               Discover <span> <RiArrowDropDownFill/></span>
             </Link>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className=" p-4 flex flex-col space-y-2 items-start rounded-lg bg-white">
+            <DropdownMenuContent className=" p-4 space-x-6 flex flex-col space-y-2 items-start rounded-lg bg-white">
               <Dropdown/>
             </DropdownMenuContent>
             </DropdownMenu>
-            <Link href="/features" className=" font-medium text-primary hover:text-primary-foreground">
+            <Link href="/features" className=" hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               Community
             </Link>
-            <Link href="/pricing" className=" font-medium text-primary hover:text-primary-foreground">
+            <Link href="/pricing" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               About Us
             </Link>
-            <Link href="/about" className="font-medium text-primary hover:text-primary-foreground">
+            <Link href="/about" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               Blog
             </Link>
-            <Link href="/contact" className="font-medium text-primary hover:text-primary-foreground">
+            <Link href="/contact" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               Contact Us
             </Link>
           </nav>
-          <div className='hidden lg:block  md:block w-64 lg:w-96'><SearchBar/></div>
-          <div className="hidden space-x-4 md:flex items-center text-xs lg:flex lg:text-base justify-between  md:flex-1">
+          <div className='hidden lg:block  md:block w-64 lg:w-96 mx-4'><SearchBar/></div>
+          <div className="hidden space-x-2 md:flex items-center text-xs lg:flex xl:text-base justify-between  md:flex-1">
             <Link
-              href="/login"
+              href="/auth"
               className="border border-login text-login whitespace-nowrap inline-flex items-center justify-center px-4 py-2   rounded-sm shadow-sm "
               >
               Login
@@ -91,7 +91,7 @@ export default function Header() {
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-[#F9F9F9] divide-y-2 divide-muted">
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
-                <div>
+                <div className='font-semibold text-login'>
                  ChapterWise
                 </div>
                 <div className="-mr-2">

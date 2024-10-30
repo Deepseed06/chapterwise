@@ -7,7 +7,8 @@ const ExploreButton = () => {
     <div>
          <Link href={"/"}  >
                 <button
-                  className="mt-3 w-full py-3 transparent text-base md:text-xl flex items-center justify-center font-medium text-login   
+                  className="mt-3 w-full py-3 transparent text-base md:text-xl flex items-center 
+                  justify-center font-medium text-login   
                    focus:outline-none sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                 >
                   Explore More

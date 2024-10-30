@@ -67,11 +67,11 @@ function Carousel() {
       <h2 className="text-3xl py-4 lg:text-5xl ">A world of knowlede in <br /> your pocket</h2>
       <p>What are you interested in?</p>
       </div>
-    <div className=" text-center lg:py-16 ">
+    <div className="container text-center lg:py-16 ">
       <Slider {...settings} >
         {images.map((img, idx) => (
           <div className={idx === imageIndex ? "slide activeSlide" : "slide"} key={idx}>
-            <Image src={img} alt={img} className="img"/>
+            <Image src={img} alt={img} width={500} height={900} className="img"/>
           </div>
         ))}
       </Slider>
@@ -79,9 +79,8 @@ function Carousel() {
     <Link href={"/"}>
                 <button
                   type="submit"
-                  className="mt-3  w-full px-14 py-3 border border-transparent text-base font-medium rounded-xl 
-                  text-white bg-signup shadow-sm hover:bg-primary/90 focus:outline-none   
-                  sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                  className="mt-3  px-8 py-3  text-base font-medium rounded-xl 
+                  text-white bg-signup"
                 >
                   Get Started for free 
                 </button>
