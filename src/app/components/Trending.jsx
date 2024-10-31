@@ -9,7 +9,7 @@ const images = ["What Book Changed Your Life?", "Best Book Of the Year!", "Share
 
 
   return (
-    <div className="px-4 lg:px-24 text-center lg:mb-20 lg:-mt-16">
+    <div className="px-4 lg:px-24 text-center lg:mb-8 lg:-mt-16">
       <div className=" py-8   ">
       <h2 className="text-xl font-semibold py-4 lg:my-4 lg:text-2xl 
       text-left border-b ">Connect with Like-Minded Readers</h2>
@@ -21,8 +21,8 @@ const images = ["What Book Changed Your Life?", "Best Book Of the Year!", "Share
       </div>
     <div className="container text-center grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 ">
    
-        {images.map((text) => (
-          <div key={text.index}>
+        {images.map((text, index) => (
+          <div key={index}>
 
             <Card 
             
@@ -37,9 +37,7 @@ const images = ["What Book Changed Your Life?", "Best Book Of the Year!", "Share
         ))}
 
     </div>
-    <Link href="/" className="flex justify-end">
         <ExploreButton/>
-    </Link>
         </div>
   );
 }

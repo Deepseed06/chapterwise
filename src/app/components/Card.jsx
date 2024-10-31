@@ -5,12 +5,12 @@ import Button from "./Button"
 import { Rating } from '@mui/material';
 import { cn } from '@/lib/utils';
 
-const Card = ({ imageUrl, title, description, category, ratingValue, exploreText, buttonText, className }) => {
+const Card = ({ imageUrl, title, description, category, ratingValue, exploreText, buttonText, className, textClass }) => {
   return (
     <div className={cn('border text-left rounded-xl overflow-hidden min-w-40 lg:w-full min-h-52', className)}>
         {
            imageUrl &&
-          <div className="relative m-4  md:m-8 h-16 md:h-48 text-left ">
+          <div className="relative flex m-4  md:m-8 min-h-16 md:h-48 text-left ">
               <Image
               src={imageUrl}
               alt={title}
@@ -20,9 +20,9 @@ const Card = ({ imageUrl, title, description, category, ratingValue, exploreText
               />
           </div>
         }
-      <div className="  px-8 py-2 lg:py-8  mb-2 text-xs md:text-sm">
-        <h3 className="font-bold text-signup text-sm md:text-xl mb-2 text-wrap line-clamp-1  xl:line-clamp-none">{title}</h3>
-        <p className="line-clamp-3 lg:py-4  text-signup text-wrap  xl:line-clamp-none ">{description}</p>
+      <div className={cn("  px-8 py-8 lg:py-8  mb-2 text-xs md:text-sm",textClass)}>
+        <h3 className="font-bold text-signup text-sm md:text-xl text-wrap line-clamp-1  xl:line-clamp-1">{title}</h3>
+        <p className="line-clamp-3 py-4 lg:py-4  text-signup text-wrap  xl:line-clamp-none ">{description}</p>
         <p className='text-xs font-semibold text-login'>{category}</p>
         {
           ratingValue && category ? 

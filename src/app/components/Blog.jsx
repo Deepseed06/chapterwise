@@ -21,8 +21,8 @@ const content = [
     
 ]
   return (
-    <div className="w-full px-8 lg:px-24 text-center lg:-mt-16">
-      <div className=" py-8   ">
+    <div className="w-full px-8 lg:px-24 text-center -mt-16">
+      <div className="    ">
       <h2 className="text-xl font-semibold py-8 my-4 lg:text-2xl text-left border-b ">Latest Insights from the ChapterWise Blog</h2>
       <p className="text-sm lg:text-xl  text-left">
         Stay updated with the latest trends, reading tips and community happenings. 
@@ -36,13 +36,11 @@ const content = [
         <div className='flex flex-col items-left'>
 
         {content.map((item) => (
-            <div className='text-left border p-4 w-full' key={item.index}>  
+            <div className='text-left p-4 w-full' key={item.index}>  
                 <h2>{item.title}</h2>
                 <p>{item.description}</p>
                 
-                <Link href="/" className="flex justify-start">
-                <ExploreButton/>
-                 </Link>
+                <ExploreButton className='relative mt-0'/>
             </div>
         ))}
         </div>

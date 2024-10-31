@@ -62,7 +62,7 @@ function Carousel() {
   };
 
   return (
-    <div className="px-16 lg:py-16 text-center border lg:mb-24 lg:-mt-16">
+    <div className="px-16 lg:py-16 text-center lg:mb-24 lg:-mt-16">
       <div className=" text-[#304672] font-semibold">
       <h2 className="text-3xl py-4 lg:text-5xl ">A world of knowlede in <br /> your pocket</h2>
       <p>What are you interested in?</p>

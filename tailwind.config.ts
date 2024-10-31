@@ -21,7 +21,9 @@ const config: Config = {
   			foreground: 'hsl(var(--foreground))'
   		},
   		backgroundImage: {
-  			// footer: 'url('../../public/assets/lines.png')'
+			footer: 'url(../../public/assets/lines.png)',
+			auth: 'url(../../public/assets/full-line.png)',
+			bottom: 'url(../../public/assets/bottom-line.png)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

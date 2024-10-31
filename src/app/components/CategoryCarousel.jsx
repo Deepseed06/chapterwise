@@ -75,7 +75,7 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
  
 
   return (
-    <div className=" mr-2 lg:px-24 text-center border lg:-mt-16">
+    <div className=" mr-2 lg:px-24 text-center lg:-mt-16">
       <div className=" py-8 px-8   ">
       <h2 className="text-xl font-semibold py-4 my-4 lg:text-2xl text-left border-b ">Enhance Your Growth Journey</h2>
       <p className="text-sm text-left">Discover books that will enhance your mental, spiritual, emotional, and financial growth,
@@ -91,6 +91,7 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
             title={img}
             imageUrl={Journey}
             exploreText="Discover More"
+            textClass='py-2'
             description="Unlock your potential with strategies to overcome 
             mediocrity and adopt a success-driven mindset. Discover how high 
             achievers think and elevate your mental performance."
@@ -99,9 +100,9 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
         ))}
       </Slider>
     </div>
-    <Link href="/" className="flex justify-end">
+    <div>
         <ExploreButton/>
-    </Link>
+    </div>
         </div>
   );
 }

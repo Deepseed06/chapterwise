@@ -71,7 +71,8 @@ export default function Header() {
           <div className='hidden lg:block  md:block w-64 lg:w-96 mx-4'><SearchBar/></div>
           <div className="hidden space-x-2 md:flex items-center text-xs lg:flex xl:text-base justify-between  md:flex-1">
             <Link
-              href="/auth"
+              href="/auth
+              "
               className="border border-login text-login whitespace-nowrap inline-flex items-center justify-center px-4 py-2   rounded-sm shadow-sm "
               >
               Login
