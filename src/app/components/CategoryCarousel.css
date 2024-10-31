@@ -14,6 +14,7 @@
 
 .slide .img {
   width: 48rem;
+  height: 8rem;
   margin: 0 auto;
 }
 
@@ -53,7 +54,7 @@
 }
 
 .backward {
-  left: 33%;
+  left:33%;
   top: 100%;
   border-radius: 50%;
   background-color: #DDE2F6;
@@ -61,21 +62,21 @@
  
   
 }
-@media (min-width:350px) {
+@media (min-width:450px) {
   .slide .img {
     width: 48rem;
     margin: 0 auto;
-    height: 8rem;
+    height: 12rem;
   }
   .forward {
-    right: 40%;
+    right: 35%;
     top: 100%;
     background-color: #DDE2F6;
     padding: 20px;
     border-radius: 50%;
   }
   .backward {
-    left: 40%;
+    left: 35%;
     top: 100%;
     border-radius: 50%;
     background-color: #DDE2F6;
@@ -89,5 +90,28 @@
     width: 48rem;
     margin: 0 auto;
     height: 12rem;
+  }
+}
+@media (min-width:1024px) {
+  .slide .img {
+    width: 48rem;
+    margin: 0 auto;
+    height: 18rem;
+  }
+  .forward {
+    right: 43%;
+    top: 100%;
+    background-color: #DDE2F6;
+    padding: 20px;
+    border-radius: 50%;
+  }
+  .backward {
+    left: 43%;
+    top: 100%;
+    border-radius: 50%;
+    background-color: #DDE2F6;
+    padding: 20px;
+   
+    
   }
 }

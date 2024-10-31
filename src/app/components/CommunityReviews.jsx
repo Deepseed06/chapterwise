@@ -1,5 +1,4 @@
 import Card from "./Card"
-import Link from "next/link";
 import ExploreButton from "./ExploreButton"
 import Button from "./Button"
 
@@ -9,15 +8,15 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
 
 
   return (
-    <div className="px-4 lg:px-24 text-center  lg:-mt-16">
+    <div className="px-4 lg:px-24 text-center my-24 ">
       <div className=" py-8   ">
       <h2 className="text-xl font-semibold py-4 lg:my-4 lg:text-2xl text-left border-b ">
         Community Reviews</h2>
       </div>
     <div className="container text-center grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 ">
    
-        {images.map((img) => (
-          <div key={img.index}>
+        {images.map((img, index) => (
+          <div key={index}>
 
             <Card 
             buttonText= 'Read Full Review'
@@ -31,12 +30,10 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
 
     </div>
         <div>
-        <Link href="/" className="flex justify-end">
                 <ExploreButton/>
-            </Link>
         </div>
 
-        <div className=" ">
+        <div className=" my-16 mt-24 ">
       <h2 className="text-xl font-semibold py-2 my-2 
       lg:text-2xl text-left border-b text-login ">
         Join Our Monthly Book Clubs</h2>

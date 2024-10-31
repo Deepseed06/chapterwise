@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div className='grid grid-cols-1 lg:grid-cols-2 my-8 py-4 lg:px-24 '>
 
-        <div className='bg-[#BAC6EC] lg:hidden p-12 flex text-center'>
+        <div className='bg-[#BAC6EC] justify-center lg:hidden p-12 flex text-center'>
         <Image src={ContactImage} width={500} height={500} alt='contact'/>
         </div>
         <div className='px-8 w-full border shadow-lg py-8'>

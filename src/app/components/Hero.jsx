@@ -42,7 +42,7 @@ export default function Hero() {
                 </button>
                 </Link>
                 
-             <ExploreButton/>
+             <ExploreButton className='relative w-full px-4 justify-center mt-0'/>
               
                 
             </div>
