@@ -5,7 +5,6 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import React, { useState } from 'react'
 import Journey from "../../../public/assets/journey.png"
 import Card from "./Card"
-import Link from "next/link";
 import ExploreButton from "./ExploreButton"
 
 const CategoryCarousel = () => {

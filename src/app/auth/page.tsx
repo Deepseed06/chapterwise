@@ -5,7 +5,6 @@ import MainLayout from '../screens/MainLayout'
 import Link from 'next/link'
 import { Checkbox } from '@mui/material'
 const Auth = () => {
-    const [isActive, setIsActive] = useState(false)
     const [signInScreen, setSignInScreen] = useState(true)
     const [signupScreen, setSignupScreen] = useState(false)
     const handleSignIn = () =>{

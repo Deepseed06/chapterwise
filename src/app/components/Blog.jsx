@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import ExploreButton from "./ExploreButton"
 import Image from 'next/image';
 import blogImg from "../../../public/assets/blog.png"

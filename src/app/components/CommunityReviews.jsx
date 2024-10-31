@@ -1,5 +1,4 @@
 import Card from "./Card"
-import Link from "next/link";
 import ExploreButton from "./ExploreButton"
 import Button from "./Button"
 
