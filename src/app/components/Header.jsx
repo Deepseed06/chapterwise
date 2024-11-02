@@ -71,14 +71,14 @@ export default function Header() {
           <div className='hidden lg:block  md:block w-64 lg:w-96 mx-4'><SearchBar/></div>
           <div className="hidden space-x-2 md:flex items-center text-xs lg:flex xl:text-base justify-between  md:flex-1">
             <Link
-              href="/auth
+              href="/sign-in
               "
               className="border border-login text-login whitespace-nowrap inline-flex items-center justify-center px-4 py-2   rounded-sm shadow-sm "
               >
               Login
             </Link>
             <Link
-              href="/signup"
+              href="/sign-up"
               className=" whitespace-nowrap text-white bg-signup inline-flex items-center justify-center px-4 py-2 shadow-sm  font-medium rounded-lg"
             >
               Sign up
@@ -144,13 +144,13 @@ export default function Header() {
             </div>
             <div className="py-6 px-5 space-y-6">
               <Link
-                href="/signup"
+                href="/sign-in"
                 className="border border-login w-full flex items-center justify-center px-4 py-2 rounded-lg shadow-sm text-base font-medium text-login bg-primary hover:bg-primary/90"
               >
                 Login 
               </Link>
               <Link
-                href="/signup"
+                href="/sign-up"
                 className="w-full bg-signup text-white flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-base font-medium "
               >
                 Sign up
