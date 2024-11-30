@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css"
 import {Lato} from "next/font/google" 
- 
+import Provider from "@/redux/provider";
+import { ToastSetup } from "./utils";
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
   subsets: ['latin'],
@@ -23,8 +24,13 @@ export default function RootLayout({
       <body
         className={`${lato.className} antialiased`}
       >
-        
-        {children}
+        <Provider>
+          <ToastSetup/>
+          <div>
+           {children}
+          </div>
+        </Provider>
+      
       </body>
     </html>
   );

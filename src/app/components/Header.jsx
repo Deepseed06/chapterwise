@@ -47,9 +47,9 @@ export default function Header() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>    
-            <Link href="/features" className=" flex items-center  ">
+            <div className=" flex items-center ">
               Discover <span> <RiArrowDropDownFill/></span>
-            </Link>
+            </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className=" p-4 space-x-6 flex flex-col space-y-2 items-start rounded-lg bg-white">
               <Dropdown/>
