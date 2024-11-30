@@ -1,1 +1,1 @@
-export {default as ToastSetup} from './toastSetup'
+export {default as ToastSetup} from './ToastSetup'

@@ -6,11 +6,11 @@ import MainLayout from "@screens/MainLayout"
 import { toast } from 'react-toastify'
 import Link from 'next/link'
   
-import { Checkbox, Modal } from '@mui/material'
+import { Checkbox } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import { useLoginMutation } from '@/redux/features/authApiSlice'
 
-const SignUp = () => {
+const SignIn = () => {
    const router = useRouter();
 	const [login, { isLoading }] = useLoginMutation();
 
@@ -62,13 +62,17 @@ const SignUp = () => {
            </div>
            <div className='px-8 w-full border shadow-lg bg-[#F9F9F9] py-2'>
                <div className='flex  justify-between text-2xl md:text-3xl'>
-                   <Link href='/sign-in' className='p-4 cursor-pointer text-signup border-signup'>
-                   Sign In
-                   </Link>
-                  <Link href='/sign-up' className='p-4 border-b-2
+                  <div>
+                  <button onClick={() => router.push('/sign-up')} className='p-4 border-b-2
                    border-[#BAC6EC] text-[#BAC6EC]'> 
-                   Sign Up 
-                  </Link>
+                   Sign In
+                  </button>
+                  </div>
+                  <div>
+                  <button onClick={() => router.push('/sign-in')} className='p-4   text-signup border-signup'>
+                   Sign Up
+                   </button>
+                  </div>
                </div>
 
            <form onSubmit={loginUser}>
@@ -95,10 +99,10 @@ const SignUp = () => {
                <div className='flex items-center text-xs md:text-sm my-3'>
                 <Checkbox/> Agree to the Terms & Conditions and Privacy Policy</div>
           
-                                   <Button isLoading={isLoading} googleIcon={false}  width='full' 
-                                   text="Login" color="signup"
-                                   className='text-white my-4'
-                                   />
+                        <Button isLoading={isLoading} googleIcon={false}  width='full' 
+                        text="Login" color="signup"
+                        className='text-white my-4'
+                        />
 
                 </form>
    
@@ -124,4 +128,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignIn

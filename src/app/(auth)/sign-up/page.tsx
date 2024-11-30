@@ -14,9 +14,9 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
   
-import { Checkbox, Modal } from '@mui/material'
+import { Checkbox } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { useRegisterMutation, useRetrieveUserQuery } from '@/redux/features/authApiSlice'
+import { useRegisterMutation } from '@/redux/features/authApiSlice'
 
 const SignUp = () => {
    const router = useRouter();
@@ -47,6 +47,7 @@ const SignUp = () => {
 			.then(() => {
 				toast.success('Please check email to verify account');
                 setShow(true)
+                router.push('/')
 			})
 			.catch((error) => {
 				toast.error(`${JSON.stringify(error.data)}`);
@@ -75,13 +76,13 @@ const SignUp = () => {
            </div>
            <div className='px-8 w-full border shadow-lg bg-[#F9F9F9] py-2'>
                <div className='flex  justify-between text-2xl md:text-3xl'>
-                   <Link href='/sign-in' className='p-4 cursor-pointer text-signup border-signup'>
+                   <button onClick={() => router.push('/sign-in')} className='p-4 text-signup border-signup'>
                      Sign In
-                   </Link>
-                  <Link href='/sign-up' className='p-4 border-b-2 border-[#BAC6EC]
+                   </button>
+                  <button onClick={() => router.push('/sign-up')} className=' p-4 border-b-2 border-[#BAC6EC]
                    text-[#BAC6EC]'> 
                      Sign Up 
-                  </Link>
+                  </button>
                </div>
 
            <form onSubmit={registerUser}>

@@ -9,14 +9,13 @@ import { useVerifyMutation } from '@/redux/features/authApiSlice'
 const Otp = () => {
    const router = useRouter();
 	const [verify, {isLoading}] = useVerifyMutation();
-	const [otp, setOtp] = useState();
+	const [otp, setOtp] = useState('');
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target
 		setOtp(value);
 	};
-
-    const email = localStorage.getItem('email')
+    const email =typeof window !=='undefined'? localStorage.getItem('email') : ''
 
 	const verifyUser = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -24,7 +23,6 @@ const Otp = () => {
 			.unwrap()
 			.then(() => {
 				toast.success('You have Successfully logged in');
-                
                 router.push('/')
 			})
 			.catch((error) => {
