@@ -47,7 +47,6 @@ const SignUp = () => {
 			.then(() => {
 				toast.success('Please check email to verify account');
                 setShow(true)
-                router.push('/')
 			})
 			.catch((error) => {
 				toast.error(`${JSON.stringify(error.data)}`);
