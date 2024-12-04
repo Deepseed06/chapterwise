@@ -2,16 +2,18 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import Button from "@components/Button"
 import MainLayout from "@screens/MainLayout"
-
+import { setAuth } from '@/redux/features/authSlice'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
   
 import { Checkbox } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { useLoginMutation } from '@/redux/features/authApiSlice'
+import { useLoginMutation, useLogoutMutation } from '@/redux/features/authApiSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
 const SignIn = () => {
    const router = useRouter();
+   const dispatch = useAppDispatch()
 	const [login, { isLoading }] = useLoginMutation();
 
 	const [formData, setFormData] = useState({
@@ -26,14 +28,19 @@ const SignIn = () => {
 
 		setFormData({ ...formData, [name]: value });
 	};
+    
 
 	const loginUser = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
        
 		login({ email, password })
 			.unwrap()
-			.then(() => {
+			.then((state) => {
+                dispatch(setAuth())
 				toast.success('Login Successful');
+                console.log(state)
+                document.cookie = `refresh=${state.refresh};expires=Fri,6 Dec 2024 23:59:59 GMT`
+                console.log(document.cookie, state.refresh)
                 router.push('/')
 			})
 			.catch((error) => {
@@ -63,13 +70,13 @@ const SignIn = () => {
            <div className='px-8 w-full border shadow-lg bg-[#F9F9F9] py-2'>
                <div className='flex  justify-between text-2xl md:text-3xl'>
                   <div>
-                  <button onClick={() => router.push('/sign-up')} className='p-4 border-b-2
+                  <button onClick={() => router.push('/sign-in')} className='p-4 border-b-2
                    border-[#BAC6EC] text-[#BAC6EC]'> 
                    Sign In
                   </button>
                   </div>
                   <div>
-                  <button onClick={() => router.push('/sign-in')} className='p-4   text-signup border-signup'>
+                  <button onClick={() => router.push('/sign-up')} className='p-4   text-signup border-signup'>
                    Sign Up
                    </button>
                   </div>
