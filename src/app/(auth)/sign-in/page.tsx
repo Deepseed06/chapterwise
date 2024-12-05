@@ -8,8 +8,8 @@ import Link from 'next/link'
   
 import { Checkbox } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { useLoginMutation, useLogoutMutation } from '@/redux/features/authApiSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useLoginMutation } from '@/redux/features/authApiSlice'
+import { useAppDispatch } from '@/redux/hooks'
 
 const SignIn = () => {
    const router = useRouter();

@@ -5,10 +5,12 @@ interface AuthState {
 	isLoading: boolean;
 }
   function getLoggedInState (){
-	const isLoggedIn = 	localStorage.getItem('isLoggedIn');
-	 return Boolean(isLoggedIn)?true:false
+	if(typeof window !=='undefined' ){
+		const isLoggedIn = localStorage.getItem('isLoggedIn');
+		return Boolean(isLoggedIn)?true:false
 	}
-	const loggedInState = getLoggedInState()
+	}
+	const loggedInState =  getLoggedInState()
 
 const initialState = {
 	isAuthenticated: loggedInState,
@@ -21,7 +23,7 @@ const authSlice = createSlice({
 	reducers: {
 		setAuth: state => {
 			localStorage.setItem('isLoggedIn',String(true))
-			const isLoggedIn = localStorage.getItem('isLoggedIn')
+			const isLoggedIn = typeof window !=='undefined'?  localStorage.getItem('isLoggedIn'):''
 			state.isAuthenticated = Boolean(isLoggedIn);
 
 		},

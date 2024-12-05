@@ -52,7 +52,8 @@ const SignUp = () => {
 				toast.error(`${JSON.stringify(error.data)}`);
 			});
 
-            localStorage.setItem('email', email);
+            localStorage.setItem('email', email)
+            
 	};
 
     

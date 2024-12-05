@@ -46,7 +46,7 @@ export default function Header() {
 			.then(() => {
         dispatch(setLogout())
         document.cookie = `refresh=;expires=Wed,6 Dec 2023 23:59:59 GMT`
-        localStorage.removeItem('isLoggedIn')
+       localStorage.removeItem('isLoggedIn')
 			})
 			.finally(() => {
 				router.push('/')
