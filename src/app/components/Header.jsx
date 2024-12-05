@@ -13,14 +13,47 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SearchBar from "./SearchBar"
 import {  MenuIcon, X } from 'lucide-react'
 import { RiArrowDropDownFill } from 'react-icons/ri'
+import { useLogoutMutation } from '@/redux/features/authApiSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {logout as setLogout} from '@/redux/features/authSlice'
+import Button from './Button'
 
 export default function Header() {
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const dispatch = useAppDispatch();
+  const {isAuthenticated} = useAppSelector(state=>state.auth)
+  const [logout] = useLogoutMutation()
+  const handleLogout = (event) => {
+		event.preventDefault();
+    console.log('logout')
+    console.log(isAuthenticated)
+       
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
+    const refresh = getCookie('refresh')
+		logout({refresh})
+			.unwrap()
+			.then(() => {
+        dispatch(setLogout())
+        document.cookie = `refresh=;expires=Wed,6 Dec 2023 23:59:59 GMT`
+       localStorage.removeItem('isLoggedIn')
+			})
+			.finally(() => {
+				router.push('/')
+			});
+	};
+
+  console.log(isAuthenticated)
   return (
     <header className="bg-background shadow-sm px-4 lg:px-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +102,9 @@ export default function Header() {
             </Link>
           </nav>
           <div className='hidden lg:block  md:block w-64 lg:w-96 mx-4'><SearchBar/></div>
-          <div className="hidden space-x-2 md:flex items-center text-xs lg:flex xl:text-base justify-between  md:flex-1">
+          {
+            !isAuthenticated ? (
+              <div className="hidden space-x-2 md:flex items-center text-xs lg:flex xl:text-base justify-between  md:flex-1">
             <Link
               href="/sign-in
               "
@@ -83,7 +118,21 @@ export default function Header() {
             >
               Sign up
             </Link>
+            
+
           </div>
+            )
+            :(
+  
+            <div>
+              <Button text='Logout' 
+              className='bg-signup rounded-xl'
+              handleClick={handleLogout}
+              />
+            </div>
+            )
+          }
+          
         </div>
       </div>
 

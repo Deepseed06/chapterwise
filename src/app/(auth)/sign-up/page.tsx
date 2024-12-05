@@ -52,7 +52,8 @@ const SignUp = () => {
 				toast.error(`${JSON.stringify(error.data)}`);
 			});
 
-            localStorage.setItem('email', email);
+            localStorage.setItem('email', email)
+            
 	};
 
     
@@ -139,8 +140,8 @@ const SignUp = () => {
 
                <div className='flex items-center text-xs md:text-sm my-3'><Checkbox/> Agree to the Terms & Conditions and Privacy Policy</div>
           
-                           <Dialog open={show}>
-                           <DialogTrigger   className='w-full'>
+                           <Dialog open={show} onOpenChange={() => setShow(false)}>
+                           <DialogTrigger className='w-full'>
                                    <Button isLoading={isLoading} googleIcon={false}  width='full' 
                                    text="Create Account" color="signup"
                                    className='text-white my-4'
@@ -149,17 +150,17 @@ const SignUp = () => {
                            <DialogContent className='max-w-md p-24 bg-white flex text-center'>
                                <DialogHeader className='flex justify-center items-center'>
                                <DialogTitle className='text-2xl'>Please Verify Your Email</DialogTitle>
-                                </DialogHeader>
                                <DialogDescription className='text-center'>
                                <div className='mb-4'>We have sent a verification otp to your email. Please confirm account to proceed.</div>
                                <div>Verification otp expires in 10 minutes</div>
                                    <Link href='/otp'>
-                                   <Button isLoading={isLoading} googleIcon={false} width='full' 
+                                   <Button  isLoading={isLoading} googleIcon={false} width='full' 
                                    text="Proceed" color="signup"
                                    className='text-white my-8'/>
                                    </Link>
                                    <Link href='' className='text-signup font-semibold'>Resend Verification</Link>
                                </DialogDescription>
+                                   </DialogHeader>
                            </DialogContent>
                            </Dialog>
                 
@@ -176,7 +177,7 @@ const SignUp = () => {
                    <div className='bg-white p-2 rounded-full absolute left-1/2  -bottom-4'>Or</div>
                </div>
                        <div>
-                       <Button isLoading={isLoading} googleIcon={true} width='full' 
+                       <Button isLoading={false} googleIcon={true} width='full' 
                        text="Sign Up With Google" color="white"
                        className='text-black my-4'
                        />

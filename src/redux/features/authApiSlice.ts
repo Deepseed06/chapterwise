@@ -60,15 +60,16 @@ const authApiSlice = apiSlice.injectEndpoints({
 		}),
 		verify: builder.mutation({
 			query: ({email, otp}) => ({
-				url: '/v1/accounts/otp-verification',
+				url: '/v1/accounts/otp/verify',
 				method: 'POST',
 				body:{ email, otp}
 			}),
 		}),
 		logout: builder.mutation({
-			query: () => ({
+			query: ({refresh}) => ({
 				url: '/v1/auth/user-logout',
 				method: 'POST',
+				body: {refresh}
 			}),
 		}),
 		resetPassword: builder.mutation({
