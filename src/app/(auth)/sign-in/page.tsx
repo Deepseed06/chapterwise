@@ -95,7 +95,7 @@ const SignIn = () => {
                </div>
                <div className='w-full my-3'>
                    <label className='font-semibold'>Password:</label>
-                   <input type="text" 
+                   <input type="password" 
                    placeholder='Enter Your Password' 
                    className='w-full p-4 border outline-none rounded-xl' 
                    value={password}
@@ -103,8 +103,12 @@ const SignIn = () => {
                    onChange={handleChange}
                    />
                </div>
-               <div className='flex items-center text-xs md:text-sm my-3'>
-                <Checkbox/> Agree to the Terms & Conditions and Privacy Policy</div>
+               <div className='flex items-center justify-between text-xs md:text-sm my-3'>
+                <div>
+                <Checkbox/> Remember Me
+                </div>
+                <span>Forgot Password? <Link href='/reset' className='text-signup'>Reset here</Link></span>
+                </div>
           
                         <Button isLoading={isLoading} googleIcon={false}  width='full' 
                         text="Login" color="signup"
@@ -119,7 +123,7 @@ const SignIn = () => {
                    <div className='bg-white p-2 rounded-full absolute left-1/2  -bottom-4'>Or</div>
                </div>
                        <div>
-                       <Button isLoading={isLoading} googleIcon={true} width='full' 
+                       <Button  googleIcon={true} width='full' 
                        text="Sign Up With Google" color="white"
                        className='text-black my-4'
                        />

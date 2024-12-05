@@ -37,6 +37,7 @@ const SignUp = () => {
 		const { name, value } = event.target;
 
 		setFormData({ ...formData, [name]: value });
+        console.log(email)
 	};
 
 	const registerUser = (event: FormEvent<HTMLFormElement>) => {
@@ -119,7 +120,7 @@ const SignUp = () => {
                </div>
                <div className='w-full my-3'>
                    <label className='font-semibold'>Password:</label>
-                   <input type="text" 
+                   <input type="password" 
                    placeholder='Enter Your Password' 
                    className='w-full p-4 border outline-none rounded-xl' 
                    value={password}
@@ -129,7 +130,7 @@ const SignUp = () => {
                </div>
                <div className='w-full my-3'>
                    <label className='font-semibold'>Confirm Password</label>
-                   <input type="text" 
+                   <input type="password" 
                    placeholder='Confirm Your Password' 
                    className='w-full p-4 border outline-none rounded-xl' 
                    value={password2}
