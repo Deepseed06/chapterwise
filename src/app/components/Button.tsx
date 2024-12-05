@@ -16,16 +16,14 @@ interface Props {
 const Button = ({color, text, width, googleIcon, className, isLoading, handleClick}: Props) => {
     
   return (
-    <div   >
-      <div>
-        <input type='submit' onClick={handleClick} className={cn(`bg-${color} mt-2 p-4 cursor-pointer flex justify-center w-${width} border
-     border-${color} text-white rounded-Sxl text-center`, className)} value ={ `${isLoading ? `<Spinner sm/>`: text}`} />
-      </div>
+    <button onClick={handleClick} type='submit' className={cn(`bg-${color} mt-2 p-4 cursor-pointer flex justify-center w-${width} border
+     border-${color} text-white rounded-Sxl text-center`, className)}>
       {googleIcon && <Image src={google}  alt='google-icon' className='mx-2'  />}
-      
-    </div>
-
-      
+      {
+        isLoading ? <Spinner sm/>
+        : text
+      }
+      </button>
 
   )
 }
