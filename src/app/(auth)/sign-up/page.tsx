@@ -46,11 +46,13 @@ const SignUp = () => {
 		register({ first_name, last_name, email, password, password2 })
 			.unwrap()
 			.then(() => {
+                
 				toast.success('Please check email to verify account');
                 setShow(true)
 			})
 			.catch((error) => {
-				toast.error(`${JSON.stringify(error.data)}`);
+                console.log(error)
+				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
 			});
 
             localStorage.setItem('email', email)
