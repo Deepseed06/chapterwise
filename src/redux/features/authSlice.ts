@@ -10,7 +10,24 @@ interface AuthState {
 		return Boolean(isLoggedIn)?true:false
 	}
 	}
-	const loggedInState =  getLoggedInState()
+	function getCookie(name :string) {
+		if(typeof window !=='undefined' ){
+			
+			const value = `; ${document.cookie}`;
+			const parts = value.split(`; ${name}=`);
+			if (parts.length === 2) {
+				return true
+			}
+			else{
+				return false
+			}
+		}
+		
+	}
+	
+	const loggedInState = typeof window !=='undefined'? getLoggedInState() || getCookie('refresh'): ''
+	// console.log('check state',getLoggedInState())
+	// console.log('getting cookies',getCookie('refresh'))
 
 const initialState = {
 	isAuthenticated: loggedInState,
@@ -28,6 +45,7 @@ const authSlice = createSlice({
 
 		},
 		logout: state => {
+			// localStorage.setItem('isLoggedIn', String(false))
 			localStorage.removeItem('isLoggedIn')
 			state.isAuthenticated = false;
 		},

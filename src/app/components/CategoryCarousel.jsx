@@ -26,7 +26,7 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
   };
 
   const [imageIndex, setImageIndex] = useState(0);
-  console.log(imageIndex)
+ 
     const settings = {
       infinite: true,
       lazyLoad: true,

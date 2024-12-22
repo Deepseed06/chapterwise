@@ -12,10 +12,10 @@ import { useLoginMutation } from '@/redux/features/authApiSlice'
 import { useAppDispatch } from '@/redux/hooks'
 
 const SignIn = () => {
-   const router = useRouter();
-   const dispatch = useAppDispatch()
+    const router = useRouter();
+    const dispatch = useAppDispatch()
 	const [login, { isLoading }] = useLoginMutation();
-
+    
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -32,19 +32,29 @@ const SignIn = () => {
 
 	const loginUser = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-       
+
+        function setCookieWithDate(name: string, value: string, 
+            expirationDate: Date): void {
+            const cookieValue = encodeURIComponent(value);
+            const expires = expirationDate.toUTCString();
+            document.cookie = `${name}=${cookieValue}; expires=${expires}; SameSite=Strict`;
+          }
+        
+        
 		login({ email, password })
-			.unwrap()
-			.then((state) => {
-                dispatch(setAuth())
-				toast.success('Login Successful');
-                console.log(state)
-                document.cookie = `refresh=${state.refresh};expires=Fri,6 Dec 2024 23:59:59 GMT`
-                console.log(document.cookie, state.refresh)
+        .unwrap()
+        .then((state) => {
+            dispatch(setAuth())
+            toast.success('Login Successful');
+            const expirationDate = new Date()
+            expirationDate.setDate(expirationDate.getDate() + 10)
+            setCookieWithDate('refresh', state.data.refresh, expirationDate)
+            console.log(state.data.refresh)
+           
                 router.push('/')
 			})
 			.catch((error) => {
-				toast.error(`${JSON.stringify(error.data)}`);
+				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
 			});
 
             
@@ -90,21 +100,27 @@ const SignIn = () => {
                    className='w-full p-4 border outline-none rounded-xl' 
                    value={email}
                     name='email'
+                    required
                    onChange={handleChange}
                    />
                </div>
                <div className='w-full my-3'>
                    <label className='font-semibold'>Password:</label>
-                   <input type="text" 
+                   <input type="password" 
                    placeholder='Enter Your Password' 
                    className='w-full p-4 border outline-none rounded-xl' 
                    value={password}
-                    name='password'
+                   required
+                   name='password'
                    onChange={handleChange}
                    />
                </div>
-               <div className='flex items-center text-xs md:text-sm my-3'>
-                <Checkbox/> Agree to the Terms & Conditions and Privacy Policy</div>
+               <div className='flex items-center justify-between text-xs md:text-sm my-3'>
+                <div>
+                <Checkbox/> Remember Me
+                </div>
+                <span>Forgot Password? <Link href='/reset' className='text-signup'>Reset here</Link></span>
+                </div>
           
                         <Button isLoading={isLoading} googleIcon={false}  width='full' 
                         text="Login" color="signup"
@@ -119,7 +135,7 @@ const SignIn = () => {
                    <div className='bg-white p-2 rounded-full absolute left-1/2  -bottom-4'>Or</div>
                </div>
                        <div>
-                       <Button isLoading={isLoading} googleIcon={true} width='full' 
+                       <Button  googleIcon={true} width='full' 
                        text="Sign Up With Google" color="white"
                        className='text-black my-4'
                        />

@@ -19,7 +19,7 @@ const Otp = () => {
 
 	const verifyUser = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-        verify({email, otp})
+        verify({email, otp, purpose:'password_reset'})
 			.unwrap()
 			.then(() => {
 				toast.success('You have Successfully logged in');

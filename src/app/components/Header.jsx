@@ -29,18 +29,21 @@ export default function Header() {
   const dispatch = useAppDispatch();
   const {isAuthenticated} = useAppSelector(state=>state.auth)
   const [logout] = useLogoutMutation()
+  
   const handleLogout = (event) => {
 		event.preventDefault();
-    console.log('logout')
-    console.log(isAuthenticated)
        
     function getCookie(name) {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
+    
+      if (parts.length === 2) return parts.pop().split(',').shift();
     }
+    
 
     const refresh = getCookie('refresh')
+    
+  
 		logout({refresh})
 			.unwrap()
 			.then(() => {
@@ -53,7 +56,6 @@ export default function Header() {
 			});
 	};
 
-  console.log(isAuthenticated)
   return (
     <header className="bg-background shadow-sm px-4 lg:px-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
