@@ -6,6 +6,7 @@ interface AuthState {
 }
   function getLoggedInState (){
 	if(typeof window !=='undefined' ){
+		localStorage.setItem('isLoggedIn', String(false))
 		const isLoggedIn = localStorage.getItem('isLoggedIn');
 		return Boolean(isLoggedIn)?true:false
 	}
@@ -25,7 +26,7 @@ interface AuthState {
 		
 	}
 	
-	const loggedInState = typeof window !=='undefined'? getLoggedInState() || getCookie('refresh'): ''
+	const loggedInState = typeof window !=='undefined'? getLoggedInState() && getCookie('refresh'): ''
 	// console.log('check state',getLoggedInState())
 	// console.log('getting cookies',getCookie('refresh'))
 
