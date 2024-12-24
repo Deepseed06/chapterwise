@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 interface Props{
   imageUrl? : string;
-  title?:string | undefined;
+  // title?:string | undefined;
   description?:string;
   category?:string;
   ratingValue?:number;
@@ -26,7 +26,7 @@ const Card = ({ imageUrl, title, description, category, ratingValue, exploreText
           <div className=" relative  px-16  flex m-4 min-h-24 md:m-8  md:h-48 text-left ">
               <Image
               src={imageUrl}
-              alt={title} 
+              // alt={title} 
               layout="fill"
               objectFit="cover"
               className="transition-transform duration-300 ease-in-out hover:scale-105 rounded-xl"
