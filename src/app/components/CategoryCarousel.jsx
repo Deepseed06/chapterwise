@@ -25,7 +25,7 @@ const images = ["Mental Development", "Financial Development", "Emotional Develo
     );
   };
 
-  const [imageIndex, setImageIndex] = useState(0);
+  const [_imageIndex, setImageIndex] = useState(0);
  
     const settings = {
       infinite: true,

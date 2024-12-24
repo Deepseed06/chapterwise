@@ -16,11 +16,12 @@ import {
   
 import { Checkbox } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { useRegisterMutation } from '@/redux/features/authApiSlice'
+import { useRegisterMutation, useResendOtpMutation } from '@/redux/features/authApiSlice'
 
 const SignUp = () => {
    const router = useRouter();
 	const [register, { isLoading }] = useRegisterMutation();
+    const [resendOtp] = useResendOtpMutation();
     const [show, setShow] = useState(false);
 
 	const [formData, setFormData] = useState({
@@ -40,17 +41,49 @@ const SignUp = () => {
         console.log(email)
 	};
 
+    const getOtp = () => {
+		resendOtp({ email})
+			.unwrap()
+			.then(() => {
+                
+                
+				toast.success('An Otp has been sent to your email');
+                setShow(true)
+			})
+			.catch((error) => {
+                
+                console.log(error)
+				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
+			});
+
+    }
 	const registerUser = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
        
 		register({ first_name, last_name, email, password, password2 })
 			.unwrap()
 			.then(() => {
-                
 				toast.success('Please check email to verify account');
                 setShow(true)
+               
 			})
 			.catch((error) => {
+                if(error.data.errors[0].message==='User with this email already exists.'){
+                       
+                resendOtp({email})
+                .unwrap()
+                .then(() => {
+                    toast.success('An Otp has been sent to your email');
+                 
+                    setShow(true)
+                })
+                .catch((error) => {
+                    
+                    console.log(error)
+                    toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
+                });
+
+                }
                 console.log(error)
 				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
 			});
@@ -161,7 +194,7 @@ const SignUp = () => {
                                    text="Proceed" color="signup"
                                    className='text-white my-8'/>
                                    </Link>
-                                   <Link href='' className='text-signup font-semibold'>Resend Verification</Link>
+                                   <button  onClick={getOtp} className='text-signup font-semibold'>Resend Verification</button>
                                </DialogDescription>
                                    </DialogHeader>
                            </DialogContent>

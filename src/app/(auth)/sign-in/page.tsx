@@ -5,16 +5,26 @@ import MainLayout from "@screens/MainLayout"
 import { setAuth } from '@/redux/features/authSlice'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
   
 import { Checkbox } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { useLoginMutation } from '@/redux/features/authApiSlice'
+import { useLoginMutation, useResendOtpMutation } from '@/redux/features/authApiSlice'
 import { useAppDispatch } from '@/redux/hooks'
 
 const SignIn = () => {
     const router = useRouter();
     const dispatch = useAppDispatch()
 	const [login, { isLoading }] = useLoginMutation();
+	const [resendOtp] = useResendOtpMutation();
+    const [show, setShow] = useState(false);
     
 	const [formData, setFormData] = useState({
 		email: '',
@@ -29,6 +39,26 @@ const SignIn = () => {
 		setFormData({ ...formData, [name]: value });
 	};
     
+    const getOtp = () => {
+		resendOtp({ email})
+			.unwrap()
+			.then(() => {
+                
+                
+				toast.success('An Otp has been sent to your email');
+                setShow(true)
+			})
+			.catch((error) => {
+                
+                console.log(error)
+				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
+                if(error.status===429){
+                    toast.error(`${JSON.stringify(error.data.message)}`);
+
+                }
+			});
+
+    }
 
 	const loginUser = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -55,9 +85,26 @@ const SignIn = () => {
 			})
 			.catch((error) => {
 				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
-			});
+                console.log('why')
+                if(error.data.errors[0].message==='Your Account is inactive. Kindly verify your account or contact admin for further assistance.'){
+                    resendOtp({email})
+                    .unwrap()
+                    .then(() => {
+                        toast.success('An Otp has been sent to your email');
+                        setShow(true)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                        if(error.status===429){
+                            toast.error(`${JSON.stringify(error.data.message)}`);
+                            
+                        }else{
+                            toast.error(`${JSON.stringify(error.data.errors[0].message)} `);
 
-            
+                        }
+                    });
+                }
+			});
 	};
 
     
@@ -122,11 +169,31 @@ const SignIn = () => {
                 <span>Forgot Password? <Link href='/reset' className='text-signup'>Reset here</Link></span>
                 </div>
           
-                        <Button isLoading={isLoading} googleIcon={false}  width='full' 
+                        
+
+                        <Dialog open={show} onOpenChange={() => setShow(false)}>
+                           <DialogTrigger className='w-full'>
+                           <Button isLoading={isLoading} googleIcon={false}  width='full' 
                         text="Login" color="signup"
                         className='text-white my-4'
                         />
-
+                           </DialogTrigger>
+                           <DialogContent className='max-w-md p-24 bg-white flex text-center'>
+                               <DialogHeader className='flex justify-center items-center'>
+                               <DialogTitle className='text-2xl'>Please Verify Your Email</DialogTitle>
+                               <DialogDescription className='text-center'>
+                               <div className='mb-4'>We have sent a verification otp to your email. Please confirm account to proceed.</div>
+                               <div>Verification otp expires in 10 minutes</div>
+                                   <Link href='/otp'>
+                                   <Button  isLoading={isLoading} googleIcon={false} width='full' 
+                                   text="Proceed" color="signup"
+                                   className='text-white my-8'/>
+                                   </Link>
+                                   <button  onClick={getOtp} className='text-signup font-semibold'>Resend Verification</button>
+                               </DialogDescription>
+                                   </DialogHeader>
+                           </DialogContent>
+                           </Dialog>
                 </form>
    
                  
