@@ -69,7 +69,7 @@ const Reset = () => {
               see it&apos; check your spam folder or try again.
               </div>
             <div className='text-center my-8'>
-              <p>Don&apos;t Have An Account? <Link href='/sign-in' className='text-signup 
+              <p>Have An Account? <Link href='/sign-in' className='text-signup 
               font-semibold'>Login here</Link></p>
             </div>
           <div className='relative border-b mb-8 py-2 border-black'>

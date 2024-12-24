@@ -27,8 +27,8 @@ interface AuthState {
 	}
 	
 	const loggedInState = typeof window !=='undefined'? getLoggedInState() && getCookie('refresh'): ''
-	// console.log('check state',getLoggedInState())
-	// console.log('getting cookies',getCookie('refresh'))
+	console.log('check state',getLoggedInState())
+	console.log('getting cookies',getCookie('refresh'))
 
 const initialState = {
 	isAuthenticated: loggedInState,

@@ -1,27 +1,23 @@
 "use client"
 import Dropdown from './Dropdown'
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SearchBar from "./SearchBar"
 import {  MenuIcon, X } from 'lucide-react'
-import { RiArrowDropDownFill } from 'react-icons/ri'
 import { useLogoutMutation } from '@/redux/features/authApiSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {logout as setLogout} from '@/redux/features/authSlice'
-import Button from './Button'
+import Image from 'next/image'
+import userImg from '../../../public/assets/atomic.png'
 
 export default function Header() {
   const router = useRouter()
@@ -32,7 +28,6 @@ export default function Header() {
   
   const handleLogout = (event) => {
 		event.preventDefault();
-       
     function getCookie(name) {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
@@ -42,7 +37,7 @@ export default function Header() {
     
 
     const refresh = getCookie('refresh')
-    
+    console.log(refresh)
   
 		logout({refresh})
 			.unwrap()
@@ -69,34 +64,33 @@ export default function Header() {
             <SearchBar/>
             </div>
           <div className="-mr-2 -my-2 md:hidden">
+            {
+              isAuthenticated ? (
+                ''
+              ):
             <button
-              type="button"
-              className="bg-background rounded-md p-2 inline-flex items-center justify-center text-primary hover:text-primary-foreground hover:bg-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            type="button"
+            className="bg-background rounded-md p-2 inline-flex items-center justify-center text-primary hover:text-primary-foreground hover:bg-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
              
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </button>
+            }
+
+            
           </div>
           <nav className="hidden text-signup  md:justify-center w-full font-semibold md:flex lg:flex xl:justify-center md:text-xs xl:text-base  space-x-6">
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>    
-            <div className=" flex items-center ">
-              Discover <span> <RiArrowDropDownFill/></span>
-            </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className=" p-4 space-x-6 flex flex-col space-y-2 items-start rounded-lg bg-white">
-              <Dropdown/>
-            </DropdownMenuContent>
-            </DropdownMenu>
-            <Link href="/features" className=" hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
+            <Link href="/discover" className=" hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
+              Discover
+            </Link>
+            <Link href="/community" className=" hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               Community
             </Link>
-            <Link href="/pricing" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
+            <Link href="/about" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               About Us
             </Link>
-            <Link href="/about" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
+            <Link href="/blog" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
               Blog
             </Link>
             <Link href="/contact" className="hover:border-b-2 pb-2 pt-2 border-black hover:drop-shadow-[2px_2px_25px_rgb(0,0,225)]">
@@ -125,13 +119,19 @@ export default function Header() {
           </div>
             )
             :(
-  
-            <div>
-              <Button text='Logout' 
-              className='bg-signup rounded-xl'
-              handleClick={handleLogout}
-              />
-            </div>
+              <Select>
+              <SelectTrigger className="w-[70px]">
+              <Image src={userImg} width={20} height={20} />
+              </SelectTrigger>
+              <SelectContent >
+                <div className='flex flex-col p-4 space-y-2 '>
+                  <Link  href="/profile">Profile</Link>
+                  <Link href="dark">Account</Link>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              </SelectContent>
+            </Select>
+            
             )
           }
           
@@ -164,27 +164,17 @@ export default function Header() {
               <div className="mt-6">
                 <nav className="grid gap-y-8">
                   
-                  
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                    <Link href="/" className=" flex items-center text-base font-medium text-primary hover:text-primary-foreground">
+                    <Link href="/discover" className=" flex items-center text-base font-medium text-primary hover:text-primary-foreground">
                       Discover
                     </Link>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <Dropdown/>
-                    </AccordionContent>
-                  </AccordionItem>
                 
-                </Accordion>
-                  <Link href="/features" className="text-base font-medium text-primary hover:text-primary-foreground">
+                  <Link href="/community" className="text-base font-medium text-primary hover:text-primary-foreground">
                     Community
                   </Link>
-                  <Link href="/pricing" className="text-base font-medium text-primary hover:text-primary-foreground">
+                  <Link href="/about" className="text-base font-medium text-primary hover:text-primary-foreground">
                     About Us
                   </Link>
-                  <Link href="/about" className="text-base font-medium text-primary hover:text-primary-foreground">
+                  <Link href="/blog" className="text-base font-medium text-primary hover:text-primary-foreground">
                     Blog
                   </Link>
                   <Link href="/contact" className="text-base font-medium text-primary hover:text-primary-foreground">
