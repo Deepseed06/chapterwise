@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 
 interface Props{
   imageUrl? : string;
+  title?:string;
   description?:string;
   category?:string;
   ratingValue?:number;
