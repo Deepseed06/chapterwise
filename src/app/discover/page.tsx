@@ -32,6 +32,10 @@ const Discover = () => {
     console.log(`Fetching data for page ${page}`)
   }
   return (
+    <div>
+
+    {
+      isAuthenticated && (
     
         <MainLayout>
     <section className="bg-background px-4 lg:px-16">
@@ -140,7 +144,9 @@ const Discover = () => {
        <div className="w-48 my-4"> <Button text="Explore Book Clubs" color="signup"/></div>
       </div>
         </MainLayout>
-    
+      )
+}
+        </div>
   )
 }
 
