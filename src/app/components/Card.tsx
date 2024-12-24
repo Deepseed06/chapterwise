@@ -6,7 +6,7 @@ import { Rating } from '@mui/material';
 import { cn } from '@/lib/utils';
 
 interface Props{
-  imageUrl? : any;
+  imageUrl? : string;
   title?:string;
   description?:string;
   category?:string;

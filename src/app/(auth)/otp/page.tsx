@@ -83,7 +83,7 @@ const Otp = () => {
                           />
                     
                 </form>
-                        <span className='ml-64 '>Didn't get Otp? <button className='text-signup' onClick={getOtp}>Resend</button></span>
+                        <span className='ml-64 '>Didn&apos;t get Otp? <button className='text-signup' onClick={getOtp}>Resend</button></span>
                 
            </div>
            </div>

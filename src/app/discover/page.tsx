@@ -2,7 +2,6 @@
 import React from 'react'
 import MainLayout from '../screens/MainLayout'
 import Image from 'next/image'
-import Link from 'next/link'
 import ExploreImg from '../../../public/assets/explore.png'
 import BookImg from '../../../public/assets/atomic.png'
 import Card from '@components/Card'
@@ -25,7 +24,7 @@ const Discover = () => {
     const images = ["What Book Changed Your Life?", "Best Book Of the Year!", "Share Your Reading Goals"];
     const genres = ["Mental Development", "Financial Development", "Emotional Development" , "Spiritual Development", "Parenting"];
     const {isAuthenticated} = useAppSelector(state=>state.auth)
-    const [currentPage, setCurrentPage] = useState(1)
+    const [_currentPage, setCurrentPage] = useState(1)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -62,7 +61,7 @@ const Discover = () => {
             </h1>
             <p className="mt-3 text-signup sm: sm:text-xl lg:text-lg xl:text-xl">
             Personalized book suggestions from real readers. 
-            Help uncover tomorrow's hits by voting 
+            Help uncover tomorrow&apos;s hits by voting 
             for the ones you love.
             </p>
            
@@ -99,8 +98,8 @@ const Discover = () => {
         <div className='border px-4 py-4 hidden md:block'>
             <span className='text-xl border-b-2 py-4 text-nowrap flex'>Browse Genres</span>
             {
-                genres.map((item) => (
-                    <div className=' items-center space-x-2 text-red-500 hidden lg:flex'>
+                genres.map((index, item) => (
+                    <div key={index} className=' items-center space-x-2 text-red-500 hidden lg:flex'>
                         <span className='w-2 h-2 bg-red-500 rounded-full'></span>
                         <div className='my-4 flex text-nowrap'>{item}</div>
                     </div>
@@ -118,7 +117,7 @@ const Discover = () => {
             title={text}
             ratingValue={3}
             category='Mental Development'
-            imageUrl={BookImg}
+            imageUrl={BookImg.src}
             className='flex flex-col py-2 md:flex-row bg-[#DDE2F6]'
             textClass='px-2'
             description="Unlock your potential with strategies to 

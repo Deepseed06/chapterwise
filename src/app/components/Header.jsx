@@ -1,11 +1,8 @@
 "use client"
-import Dropdown from './Dropdown'
 import {
   Select,
   SelectContent,
-  SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select"
 
 import { useState } from 'react'
@@ -121,7 +118,7 @@ export default function Header() {
             :(
               <Select>
               <SelectTrigger className="w-[70px]">
-              <Image src={userImg} width={20} height={20} />
+              <Image src={userImg} alt="" width={20} height={20} />
               </SelectTrigger>
               <SelectContent >
                 <div className='flex flex-col p-4 space-y-2 '>
