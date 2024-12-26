@@ -16,30 +16,35 @@ const Otp = () => {
         const {value} = event.target
 		setOtp(value);
 	};
+    
     const email =typeof window !=='undefined'? localStorage.getItem('email') : ''
     const getOtp = () => {
-		resendOtp({ email})
-			.unwrap()
-			.then(() => {
-				toast.success('An Otp has been sent to your email');
-                
-			})
-			.catch((error) => {
-                
-                console.log(error)
-				toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
-			});
-
+        resendOtp({ email})
+        .unwrap()
+        .then(() => {
+            toast.success('An Otp has been sent to your email');
+            
+        })
+        .catch((error) => {
+            
+            console.log(error)
+            toast.error(`${JSON.stringify(error.data.errors[0].message)}`);
+        });
+        
     }
 	const verifyUser = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-        verify({email, otp, purpose:'password_reset'})
+        event.preventDefault();
+        console.log(otp)
+        
+        verify({email, otp, purpose:'login'})
 			.unwrap()
 			.then(() => {
 				toast.success('You can now log in');
+                console.log('show')
                 router.push('/')
 			})
 			.catch((error) => {
+                console.error(error)
 				toast.error(`${JSON.stringify(error.data)}`);
 			});
 
